@@ -53,9 +53,7 @@ with st.form("survey_form"):
             except Exception as e:
                 st.error(f"Error writing to CSV: {e}")
 
-# DATA DISPLAY
-# This section shows the current contents of the CSV file, which helps in debugging.
-st.divider()  # Adds a horizontal line for visual separation.
+st.divider()
 st.header("Current Data in CSV")
 
 if os.path.exists(csv_path) and os.path.getsize(csv_path) > 0:
