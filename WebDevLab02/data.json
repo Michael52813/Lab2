@@ -1,0 +1,10 @@
+{
+  "chart_title": "Finn the Human - Monsters Defeated Three Weeks ago",
+  "data_points": [
+    {"label": "Ice King", "value": 8},
+    {"label": "Zombies", "value": 3},
+    {"label": "Goblin King", "value": 1},
+    {"label": "Whywolfs", "value": 4},
+    {"label": "Random Jerks", "value": 6}
+  ]
+}
