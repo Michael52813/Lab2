@@ -16,14 +16,7 @@ def reset_csv():
     with open(csv_path, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(['Villain', 'Times Defeated'])
-if st.button("Reset Data"):
-    reset_csv()
-    st.experimental_rerun()
 
-if not os.path.exists(csv_path) or os.path.getsize(csv_path) == 0:
-    with open(csv_path, "w", newline="") as f:
-        writer = csv.writer(f)
-        writer.writerow(["Villain", "Times Defeated"])
 
 # PAGE TITLE AND USER DIRECTIONS
 st.title("Data Collection Survey")
@@ -48,7 +41,6 @@ st.write("Please fill out the form below to add your data to the dataset.")
 with st.form("survey_form"):
     category_input = st.text_input("Enter a villain:")
     value_input = st.text_input("Enter the amount of times Finn defeated that villain:")
-
     submitted = st.form_submit_button("Submit Data")
 
     if submitted:
@@ -66,17 +58,6 @@ with st.form("survey_form"):
 # DATA DISPLAY
 # This section shows the current contents of the CSV file, which helps in debugging.
 st.divider()  # Adds a horizontal line for visual separation.
-st.header("Current Data in CSV")
-
-if os.path.exists(csv_path) and os.path.getsize(csv_path) > 0:
-    try:
-        df = pd.read_csv(csv_path)
-        st.dataframe(df)
-    except Exception as e:
-        st.error(f"Error reading CSV: {e}")
-else:
-    st.warning("The 'data.csv' file is empty or does not exist yet.")
-    
 #Resetting data in csv 
 if st.button("Reset CSV Data"):
     with open(csv_path, "w", newline="") as f:
@@ -86,4 +67,15 @@ if st.button("Reset CSV Data"):
 if os.path.exists(csv_path):
     import pandas as pd
     df = pd.read_csv(csv_path)
-    st.dataframe(df)
+
+st.header("Current Data in CSV")
+if os.path.exists(csv_path) and os.path.getsize(csv_path) > 0:
+    try:
+        df = pd.read_csv(csv_path)
+        st.dataframe(df)
+    except Exception as e:
+        st.error(f"Error reading CSV: {e}")
+else:
+    st.warning("The 'data.csv' file is empty or does not exist yet.")
+    
+
